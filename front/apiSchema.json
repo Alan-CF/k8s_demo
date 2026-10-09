@@ -1,0 +1,1413 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "",
+    "version": "0.0.0"
+  },
+  "paths": {
+    "/api/schema/": {
+      "get": {
+        "operationId": "api_schema_retrieve",
+        "description": "OpenApi3 schema for this API. Format can be selected via content negotiation.\n\n- YAML: application/vnd.oai.openapi\n- JSON: application/vnd.oai.openapi+json",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "type": "string",
+              "enum": ["json", "yaml"]
+            }
+          },
+          {
+            "in": "query",
+            "name": "lang",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "af",
+                "ar",
+                "ar-dz",
+                "ast",
+                "az",
+                "be",
+                "bg",
+                "bn",
+                "br",
+                "bs",
+                "ca",
+                "ckb",
+                "cs",
+                "cy",
+                "da",
+                "de",
+                "dsb",
+                "el",
+                "en",
+                "en-au",
+                "en-gb",
+                "eo",
+                "es",
+                "es-ar",
+                "es-co",
+                "es-mx",
+                "es-ni",
+                "es-ve",
+                "et",
+                "eu",
+                "fa",
+                "fi",
+                "fr",
+                "fy",
+                "ga",
+                "gd",
+                "gl",
+                "he",
+                "hi",
+                "hr",
+                "hsb",
+                "ht",
+                "hu",
+                "hy",
+                "ia",
+                "id",
+                "ig",
+                "io",
+                "is",
+                "it",
+                "ja",
+                "ka",
+                "kab",
+                "kk",
+                "km",
+                "kn",
+                "ko",
+                "ky",
+                "lb",
+                "lt",
+                "lv",
+                "mk",
+                "ml",
+                "mn",
+                "mr",
+                "ms",
+                "my",
+                "nb",
+                "ne",
+                "nl",
+                "nn",
+                "os",
+                "pa",
+                "pl",
+                "pt",
+                "pt-br",
+                "ro",
+                "ru",
+                "sk",
+                "sl",
+                "sq",
+                "sr",
+                "sr-latn",
+                "sv",
+                "sw",
+                "ta",
+                "te",
+                "tg",
+                "th",
+                "tk",
+                "tr",
+                "tt",
+                "udm",
+                "ug",
+                "uk",
+                "ur",
+                "uz",
+                "vi",
+                "zh-hans",
+                "zh-hant"
+              ]
+            }
+          }
+        ],
+        "tags": ["api"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.oai.openapi": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              },
+              "application/yaml": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              },
+              "application/vnd.oai.openapi+json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/operations/ingredients/": {
+      "get": {
+        "operationId": "operations_ingredients_list",
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ingredient"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "operations_ingredients_create",
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ingredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/operations/ingredients/{id}/": {
+      "get": {
+        "operationId": "operations_ingredients_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ingredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "operationId": "operations_ingredients_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ingredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "operations_ingredients_partial_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedIngredient"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedIngredient"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedIngredient"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ingredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "operations_ingredients_destroy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/operations/recipe-ingredients/": {
+      "get": {
+        "operationId": "operations_recipe_ingredients_list",
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecipeIngredient"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "operations_recipe_ingredients_create",
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeIngredient"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeIngredient"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeIngredient"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeIngredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/operations/recipe-ingredients/{id}/": {
+      "get": {
+        "operationId": "operations_recipe_ingredients_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeIngredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "operationId": "operations_recipe_ingredients_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeIngredient"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeIngredient"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeIngredient"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeIngredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "operations_recipe_ingredients_partial_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedRecipeIngredient"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedRecipeIngredient"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedRecipeIngredient"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeIngredient"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "operations_recipe_ingredients_destroy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe ingredient.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/operations/recipes/": {
+      "get": {
+        "operationId": "operations_recipes_list",
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Recipe"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "operations_recipes_create",
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recipe"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/operations/recipes/{id}/": {
+      "get": {
+        "operationId": "operations_recipes_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recipe"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "operationId": "operations_recipes_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recipe"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "operations_recipes_partial_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedRecipe"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedRecipe"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedRecipe"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recipe"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "operations_recipes_destroy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this recipe.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    },
+    "/operations/unit-measurements/": {
+      "get": {
+        "operationId": "operations_unit_measurements_list",
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UnitMeasurement"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "operations_unit_measurements_create",
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitMeasurement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/operations/unit-measurements/{id}/": {
+      "get": {
+        "operationId": "operations_unit_measurements_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this unit measurement.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitMeasurement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "operationId": "operations_unit_measurements_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this unit measurement.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitMeasurement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "operations_unit_measurements_partial_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this unit measurement.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedUnitMeasurement"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedUnitMeasurement"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedUnitMeasurement"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnitMeasurement"
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "operations_unit_measurements_destroy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "A unique integer value identifying this unit measurement.",
+            "required": true
+          }
+        ],
+        "tags": ["operations"],
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          },
+          {}
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DimensionEnum": {
+        "enum": ["mass", "volume", "length"],
+        "type": "string",
+        "description": "* `mass` - Mass\n* `volume` - Volume\n* `length` - Length"
+      },
+      "Ingredient": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": ["id", "name"]
+      },
+      "PatchedIngredient": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PatchedRecipe": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "recipe_ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecipeIngredient"
+            }
+          }
+        }
+      },
+      "PatchedRecipeIngredient": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "ingredient": {
+            "type": "integer",
+            "writeOnly": true
+          },
+          "ingredient_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            ],
+            "readOnly": true
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "unit": {
+            "type": "integer",
+            "writeOnly": true,
+            "nullable": true
+          },
+          "unit_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            ],
+            "readOnly": true
+          }
+        }
+      },
+      "PatchedUnitMeasurement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "abbreviation": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "dimension": {
+            "$ref": "#/components/schemas/DimensionEnum"
+          }
+        }
+      },
+      "Recipe": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "recipe_ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecipeIngredient"
+            }
+          }
+        },
+        "required": ["id", "name", "recipe_ingredients"]
+      },
+      "RecipeIngredient": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "ingredient": {
+            "type": "integer",
+            "writeOnly": true
+          },
+          "ingredient_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Ingredient"
+              }
+            ],
+            "readOnly": true
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "unit": {
+            "type": "integer",
+            "writeOnly": true,
+            "nullable": true
+          },
+          "unit_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UnitMeasurement"
+              }
+            ],
+            "readOnly": true
+          }
+        },
+        "required": [
+          "id",
+          "ingredient",
+          "ingredient_details",
+          "quantity",
+          "unit_details"
+        ]
+      },
+      "UnitMeasurement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "abbreviation": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "dimension": {
+            "$ref": "#/components/schemas/DimensionEnum"
+          }
+        },
+        "required": ["abbreviation", "id", "name"]
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionid"
+      }
+    }
+  }
+}
