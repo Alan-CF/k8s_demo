@@ -17,12 +17,12 @@ class UnitMeasurement(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
 
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     ingredients = models.ManyToManyField(
         Ingredient, through="RecipeIngredient", related_name="recipies"
     )
@@ -32,7 +32,7 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.FloatField()
-    unit = models.ForeignKey(UnitMeasurement, on_delete=models.CASCADE)
+    unit = models.ForeignKey(UnitMeasurement, on_delete=models.CASCADE, null=True)
 
     class Meta:
         constraints = [

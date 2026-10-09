@@ -25,6 +25,8 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
     unit = serializers.PrimaryKeyRelatedField(
         queryset=UnitMeasurement.objects.all(),
         write_only=True,
+        required=False,
+        allow_null=True,
     )
 
     ingredient_details = IngredientSerializer(source="ingredient", read_only=True)
@@ -34,7 +36,6 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
         model = RecipeIngredient
         fields = [
             "id",
-            "recipe",
             "ingredient",
             "ingredient_details",
             "quantity",
