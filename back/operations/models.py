@@ -35,7 +35,7 @@ class RecipeIngredient(models.Model):
     unit = models.ForeignKey(UnitMeasurement, on_delete=models.CASCADE)
 
     class Meta:
-        constraints = (
+        constraints = [
             models.UniqueConstraint(
                 fields=["recipe", "ingredient"],
                 name="unique_recipe_ingredient",
@@ -44,4 +44,4 @@ class RecipeIngredient(models.Model):
                 condition=models.Q(quantity__gt=0),
                 name="quantity_gt_0",
             ),
-        )
+        ]
