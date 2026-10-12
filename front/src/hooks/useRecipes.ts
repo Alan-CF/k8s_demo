@@ -1,27 +1,28 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../api/client";
 import { type Recipe } from "./types";
 
 export default function useRecipes() {
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
+  const [recipes, setRecipes] = useState<Recipe[] | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [trigger, setTrigger] = useState<number>(0);
 
   useEffect(() => {
     let isMounted = true;
-    fetch("/api/recipes")
+    fetch(`${BASE_URL}operations/recipes`)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         return res.json();
       })
       .then((data) => {
         if (!isMounted) return;
-        setRecipe(data);
+        setRecipes(data);
         setError(null);
       })
       .catch((err) => {
         if (!isMounted) return;
-        setRecipe(null);
+        setRecipes(null);
         setError(err);
       })
       .finally(() => {
@@ -40,7 +41,7 @@ export default function useRecipes() {
   }
 
   return {
-    recipe,
+    recipes,
     isLoading,
     error,
     refetch,

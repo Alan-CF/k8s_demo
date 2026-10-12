@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { type Recipe } from "./types";
+import { BASE_URL } from "../api/client";
 
 export function useRecipe(id: number) {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
@@ -9,7 +10,7 @@ export function useRecipe(id: number) {
 
   useEffect(() => {
     let isMounted = true;
-    fetch(`/api/recipes/${id}`)
+    fetch(`${BASE_URL}operations/recipes/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         return res.json();
