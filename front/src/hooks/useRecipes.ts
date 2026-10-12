@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { type Recipe } from "./types";
 
-export function useRecipes() {
+export default function useRecipes() {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
