@@ -1,7 +1,5 @@
 FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim
 
-ENV PYTHONUNBUFFERED=1
-
 RUN useradd --system --uid 1000 django
 
 WORKDIR /app
