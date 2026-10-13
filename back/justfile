@@ -8,3 +8,6 @@ manage *ARGS:
 
 psql:
     docker compose -f {{compose}} exec db psql -U restaurant -d restaurant
+
+docker *ARGS:
+    docker compose -f {{compose}} {{ARGS}}
