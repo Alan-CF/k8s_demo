@@ -1,0 +1,10 @@
+# justfile
+
+service := "back"
+compose := "compose.local.yaml"
+
+manage *ARGS:
+    docker compose -f {{compose}} exec {{service}} uv run python manage.py {{ARGS}}
+
+psql:
+    docker compose -f {{compose}} exec db psql -U restaurant -d restaurant
