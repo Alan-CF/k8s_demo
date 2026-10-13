@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  namespace: restaurant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django
+    template:
+      metadaata:
+        labels:
+          app: django
+      spec:
+        containers:
+          - name: django
+            image: pending...
+            ports:
+              - containerPort: 8000
+            env:
