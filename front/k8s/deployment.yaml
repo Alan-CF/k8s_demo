@@ -18,3 +18,6 @@ spec:
           image: your-registry/myapp-frontend:1.0.0
           ports:
             - containerPort: 80
+          env:
+            - name: VITE_API_URL
+              value: http://django:8000/api/

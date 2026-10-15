@@ -19,11 +19,15 @@ spec:
           ports:
             - containerPort: 8000
           env:
-            - name: DJANGO_SETTINGS_MODULE
-              value: "config.settings.production"
-            - name: DEBUG
-              value: "0"
+            - name: POSTGRES_DB
+              value: restaurant
+            - name: POSTGRES_USER
+              value: restaurant
+            - name: POSTGRES_PASSWORD
+              value: devpassword
+            - name: POSTGRES_HOST
+              value: postgres
+            - name: POSTGRES_PORT
+              value: "5432"
             - name: SECRET_KEY
               value: "change-me"
-            - name: DATABASE_URL
-              value: "postgres://user:pass@postgres:5432/myapp"
