@@ -8,14 +8,22 @@ spec:
   selector:
     matchLabels:
       app: django
-    template:
-      metadaata:
-        labels:
-          app: django
-      spec:
-        containers:
-          - name: django
-            image: pending...
-            ports:
-              - containerPort: 8000
-            env:
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+        - name: django
+          image: your-registry/myapp-backend:1.0.0
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              value: "config.settings.production"
+            - name: DEBUG
+              value: "0"
+            - name: SECRET_KEY
+              value: "change-me"
+            - name: DATABASE_URL
+              value: "postgres://user:pass@postgres:5432/myapp"

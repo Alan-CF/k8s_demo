@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: restaurant
+spec:
+  ingressClassName: nginx
+  rules:
+    http:
+      paths:
+        - path: /api
+          pathType: Prefix
+          backend:
+            service:
+              name: django
+              port:
+                number: 8000
+        - path: /admin
+          pathType: Prefix
+          backend:
+            service:
+              name: django
+              port:
+                number: 8000
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: react
+              port:
+                number: 80

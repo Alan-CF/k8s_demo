@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: django-migrate
+  namespace: restaurant
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrate
+          image: your-registry/myapp-backend:1.0.0
+          command: ["uv", "run", "python", "manage.py", "migrate", "--noinput"]
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              value: "config.settings.production"
+            - name: SECRET_KEY
+              value: "change-me"
+            - name: DATABASE_URL
+              value: "postgres://user:pass@postgres:5432/myapp"
