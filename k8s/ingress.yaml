@@ -6,26 +6,26 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    http:
-      paths:
-        - path: /api
-          pathType: Prefix
-          backend:
-            service:
-              name: django
-              port:
-                number: 8000
-        - path: /admin
-          pathType: Prefix
-          backend:
-            service:
-              name: django
-              port:
-                number: 8000
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: react
-              port:
-                number: 80
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: django
+                port:
+                  number: 8000
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: django
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: react
+                port:
+                  number: 80
