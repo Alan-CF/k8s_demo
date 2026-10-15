@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: django
-          image: your-registry/myapp-backend:1.0.0
+          image: restaurant-backend:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
           env:

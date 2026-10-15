@@ -10,7 +10,8 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: migrate
-          image: your-registry/myapp-backend:1.0.0
+          image: restaurant-backend:latest
+          imagePullPolicy: IfNotPresent
           command: ["uv", "run", "python", "manage.py", "migrate", "--noinput"]
           env:
             - name: POSTGRES_DB
