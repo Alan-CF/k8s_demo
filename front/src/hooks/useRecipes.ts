@@ -10,7 +10,7 @@ export default function useRecipes() {
 
   useEffect(() => {
     let isMounted = true;
-    fetch(`${BASE_URL}operations/recipes`)
+    fetch(`${BASE_URL}operations/recipes/`)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         return res.json();

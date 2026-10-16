@@ -1,0 +1,5 @@
+run:
+docker run --name react -p 8080:80 front:latest
+
+build:
+docker build -t restaurant-frontend:latest --build-arg VITE_API_URL=/ ./front
