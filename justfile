@@ -13,3 +13,15 @@ build-front:
 
 # Build both images
 build: build-back build-front
+
+# Rolling restart of the react deployment
+rollout-front:
+    kubectl rollout restart deployment/react -n restaurant
+
+# Rolling restart of the django deployment
+rollout-back:
+    kubectl rollout restart deployment/django -n restaurant
+
+# Rolling restart of the django deployment
+rollout:
+    rollout-back rollout-front
