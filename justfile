@@ -7,7 +7,7 @@ build-back:
 build-front:
 	docker build \
 	  -t restaurant-frontend:latest \
-	  --build-arg VITE_API_URL=http://django:8000/api/ \
+	  --build-arg VITE_API_URL=/api/ \
 	  ./front
 	minikube image load restaurant-frontend:latest
 
